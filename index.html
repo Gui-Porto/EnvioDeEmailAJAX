@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sistema de envio de e-mail AJAX</title>
+	<style>
+		.formulario input, .formulario textarea, button{
+	 		width: 20%;
+	 		margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="formulario">
+		<h2>Formulário de envio de email</h2>
+			<input name="Nome" type="text" placeholder="Insira seu nome"><br>
+			<input name="Assunto" type="text" placeholder="Insira um Assunto"><br>
+			<input name="Email" type="email" placeholder="Insira seu Email"><br>
+			<textarea name="Mensagem" id="" cols="30" rows="10" placeholder="digite uma mensagem"></textarea><br>
+			<button id="EnviaEmail">Enviar Email</button>
+			<strong class="retorno" style="font-size: 12pt;color: #2ACA06FF;"></strong>
+	</div>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+	$(function(){
+		$('#EnviaEmail').click(function(){
+			var nome 		= $('input[name="Nome"]').val();
+			var assunto 	= $('input[name="Assunto"]').val();
+			var email 		= $('input[name="Email"]').val();
+			var mensagem 	= $('textarea[name="Mensagem"]').val();
+
+			if(!nome){
+				alert("Digite seu nome!");
+				return false;
+			}
+
+			if (!assunto) {
+				alert("Digite um assunto!");
+				return false;
+			}
+
+			if (!email) {
+				alert("Digite um email!");
+				return false;
+			}
+
+			if (!mensagem) {
+				alert("Digite um mensagem!");
+				return false;
+			}
+
+			$.ajax({
+				url:  'enviar.php',
+				type: 'POST',
+				data:   'name='+nome+'&telefone='+telefone+'&subject='+assunto+'&email='+email+'&observacoes='+mensagem,
+				beforeSend: '',
+				error:    '',
+				success: function(retorno){
+					$('.retorno').text('Email enviado com sucesso!');
+					$('input').val('');
+					$('textarea').val('');
+				}
+			});
+			
+
+
+		});
+	})
+</script>
+</html>
