@@ -30,7 +30,3 @@ O formulário tem os campos de nome, assunto, e-mail e mensagem. Antes de enviar
 - `index.html` — formulário e o script com a validação e a chamada AJAX
 - `EnviaEmail.php` — recebe os dados e envia o e-mail com o PHPMailer
 - `phpmailer/` — biblioteca usada para o envio
-
-## Observação
-
-No `index.html` a chamada AJAX aponta para `enviar.php`, mas o arquivo no repositório se chama `EnviaEmail.php`. Para o envio funcionar, ajuste a URL no script ou renomeie o arquivo.
